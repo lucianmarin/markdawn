@@ -113,12 +113,14 @@ async def read_root(request: Request):
     for year, items in groupby(posts, key=lambda x: x.get('year', 'Unknown')):
         grouped_posts.append((year, list(items)))
 
+    latest = posts[0]
+
     return templates.TemplateResponse("index.html", {
         "request": request,
         "grouped_posts": grouped_posts,
         "site_title": SITE_TITLE,
         "title": SITE_TITLE,
-        "date": "today" # PHP used "today" string
+        "date": latest['date']
     })
 
 @app.get("/{year}/{month}/{day}/{name}", response_class=HTMLResponse)
