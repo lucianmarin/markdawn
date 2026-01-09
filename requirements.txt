@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+python-markdown
+jinja2
+aiofiles
