@@ -1,5 +1,5 @@
-fastapi
-uvicorn
-python-markdown
-jinja2
 aiofiles
+fastapi
+jinja2
+python-markdown
+uvicorn

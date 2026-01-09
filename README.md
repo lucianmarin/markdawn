@@ -54,8 +54,8 @@ A lightweight, flat-file blog engine converted from PHP to Python using FastAPI.
 Site-wide settings can be found in `main.py`:
 
 ```python
-SITE_TITLE = "Lucian Marin"
-IMG_ROOT = "https://lucianmarin.github.io/"
+AUTHOR = "Lucian Marin"
+DESCRIPTION = "Bio"
 ```
 
 ## Creating Posts

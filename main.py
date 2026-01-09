@@ -10,8 +10,8 @@ from pathlib import Path
 app = FastAPI()
 
 # Configuration
-SITE_TITLE = "Lucian Marin"
-IMG_ROOT = "https://lucianmarin.github.io/"
+AUTHOR = "Lucian Marin"
+DESCRIPTION = "Lucian is designer passionate about front-end engineering, usability, web and software development. Lucian is living and working as freelancer in Bucharest, Romania."
 
 # Mount static files
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -66,10 +66,6 @@ def parse_file(filepath):
 
         body = "".join(body_lines)
 
-        # Replacements
-        # str_replace("(/images/", "(".$GLOBALS['img_root']."images/", $body);
-        body = body.replace("(/images/", f"({IMG_ROOT}images/")
-
         # Parse Markdown
         # Enabling extra extensions to match typical PHP Parsedown behavior if needed,
         # but standard markdown is usually enough. 'fenced_code' is common.
@@ -118,8 +114,9 @@ async def read_root(request: Request):
     return templates.TemplateResponse("index.html", {
         "request": request,
         "grouped_posts": grouped_posts,
-        "site_title": SITE_TITLE,
-        "title": SITE_TITLE,
+        "author": AUTHOR,
+        "description": DESCRIPTION,
+        "title": AUTHOR,
         "date": latest['date']
     })
 
@@ -135,7 +132,8 @@ async def read_post(request: Request, year: str, month: str, day: str, name: str
     return templates.TemplateResponse("post.html", {
         "request": request,
         "post": post,
-        "site_title": SITE_TITLE,
+        "author": AUTHOR,
+        "description": DESCRIPTION,
         "title": post['title'],
         "date": post.get('date', '')
     })
