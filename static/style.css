@@ -44,6 +44,12 @@ footer a { color: gray; }
 
 footer a:hover { color: black; }
 
+aside h3 { color: gray; padding: 5px 0; }
+
+aside ul { margin-bottom: 10px; }
+
+aside ul:last-child { margin-bottom: 0; }
+
 aside ul li { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 aside ul b, aside ul i { font-weight: normal; font-style: normal; display: block; float: left; width: 40px; }
@@ -57,8 +63,6 @@ aside ul sup { color: silver; text-transform: uppercase; }
 aside ul a { color: black; }
 
 aside ul a:hover { color: #7ACCCC; }
-
-aside ul h3 { color: gray; padding: 5px 0; }
 
 article h4 { padding: 5px 0; color: #7A96CC; }
 

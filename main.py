@@ -1,5 +1,6 @@
 import glob
 import markdown
+from itertools import groupby
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -27,11 +28,10 @@ def get_all_posts():
     # paths like _posts/2020/... come before _posts/2009/...
     files.sort(reverse=True)
 
-    posts = {}
+    posts = []
     for filepath in files:
         post = parse_file(filepath)
-        stem = Path(filepath).stem
-        posts[stem] = post
+        posts.append(post)
 
     return posts
 
@@ -108,10 +108,14 @@ def parse_file(filepath):
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
     posts = get_all_posts()
+    grouped_posts = []
+
+    for year, items in groupby(posts, key=lambda x: x.get('year', 'Unknown')):
+        grouped_posts.append((year, list(items)))
 
     return templates.TemplateResponse("index.html", {
         "request": request,
-        "posts": posts.values(),
+        "grouped_posts": grouped_posts,
         "site_title": SITE_TITLE,
         "title": SITE_TITLE,
         "date": "today" # PHP used "today" string

@@ -3,15 +3,18 @@
 {% block content %}
 <section>
     <aside>
-        <ul>
-        {% for post in posts %}
-            <li>
-                <a href="/{{ post.year }}/{{ post.month }}/{{ post.day }}/{{ post.name }}">
-                    {{ post.title }}
-                </a>
-            </li>
+        {% for year, posts in grouped_posts %}
+            <h3>{{ year }}</h3>
+            <ul>
+            {% for post in posts %}
+                <li>
+                    <a href="/{{ post.year }}/{{ post.month }}/{{ post.day }}/{{ post.name }}">
+                        {{ post.title }}
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
         {% endfor %}
-        </ul>
     </aside>
 </section>
 {% endblock %}
