@@ -1,4 +1,6 @@
-# Markdawn (formerly Pressdown PHP)
+# Markdawn (formerly Pressdown)
+
+![screenshot](screenshot.png)
 
 A lightweight, flat-file blog engine converted from PHP to Python using FastAPI. Markdawn is designed to be simple, fast, and compatible with Jekyll-style Markdown posts.
 
